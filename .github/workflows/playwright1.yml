@@ -1,0 +1,119 @@
+name: E2E Tests
+on:
+  push:
+    branches: [clean-2]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        required: false
+        type: choice
+        options:
+          - staging-canary
+          - staging-ga
+          - production-canary
+          - production-ga
+          - stable
+          - preview
+          - localhost
+        default: localhost
+
+jobs:
+  run-tests:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2]
+        shardTotal: [2]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps firefox
+
+      - name: Run Playwright tests
+        run: npx playwright test tests/screenshots.spec.ts --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+
+      - name: Upload blob report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: blob-report-${{ matrix.shardIndex }}
+          path: blob-report
+          retention-days: 1
+
+  merge-reports:
+    if: ${{ !cancelled() }}
+    needs: [run-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Download blob reports
+        uses: actions/download-artifact@v4
+        with:
+          path: all-blob-reports
+          pattern: blob-report-*
+          merge-multiple: true
+
+      - name: Merge into HTML,JSON Reports
+        run: PLAYWRIGHT_JSON_OUTPUT_NAME=test-results.json npx playwright merge-reports --reporter html,json ./all-blob-reports
+
+      # REPRO (broken on purpose): NOT carrying all-blob-reports/resources here.
+      # merge-reports writes ABSOLUTE attachment paths into test-results.json pointing
+      # at $GITHUB_WORKSPACE/all-blob-reports/resources/<hash>, which exist only in this
+      # job. Without them, the publish job's `tdpw upload` reports "Attachment file not
+      # found" for every screenshot/video. Add `all-blob-reports/resources` to fix.
+      - name: Upload merged reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-reports--attempt-${{ github.run_attempt }}
+          path: |
+            playwright-report
+            test-results.json
+          retention-days: 3
+
+  publish-reports:
+    if: ${{ !cancelled() }}
+    needs: [merge-reports]
+    runs-on: ubuntu-latest
+    steps:
+      # checkout is required: tdpw reads git commit/branch/repo for the run and
+      # fails strict metadata validation without it.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      # Download to workspace root (.) so all-blob-reports/resources lands at the
+      # same absolute path baked into test-results.json by merge-reports.
+      - name: Download merged reports
+        uses: actions/download-artifact@v4
+        with:
+          name: merged-reports--attempt-${{ github.run_attempt }}
+          path: .
+
+      - name: Publish reports to TestDino
+        run: npx tdpw upload ./playwright-report --token=trx_production_7f35ad6fb740599af5bf65d42f59e22443bd9823fdaa2f8d3adca7c506d0469f --upload-html --json-report ./test-results.json --environment ${{ inputs.environment || vars.ENVIRONMENT || 'localhost' }}

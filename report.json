@@ -1,0 +1,1237 @@
+{
+  "config": {
+    "argv": [
+      "/usr/local/bin/node",
+      "/Users/PN/Desktop/ETC/OLD PC TestDino/Folders of OLD PC/parth-trainee/PW-test-for-microservice/node_modules/.bin/playwright",
+      "test",
+      "--list"
+    ],
+    "configFile": "/Users/PN/Desktop/ETC/OLD PC TestDino/Folders of OLD PC/parth-trainee/PW-test-for-microservice/playwright.config.ts",
+    "rootDir": "/Users/PN/Desktop/ETC/OLD PC TestDino/Folders of OLD PC/parth-trainee/PW-test-for-microservice/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/PN/Desktop/ETC/OLD PC TestDino/Folders of OLD PC/parth-trainee/PW-test-for-microservice/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {},
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/PN/Desktop/ETC/OLD PC TestDino/Folders of OLD PC/parth-trainee/PW-test-for-microservice/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 3000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "blob",
+        {
+          "outputDir": "blob-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 10,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "demo-todomvc.spec.ts",
+      "file": "demo-todomvc.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "TodoMVC — realistic demo flows",
+          "file": "demo-todomvc.spec.ts",
+          "line": 12,
+          "column": 6,
+          "specs": [
+            {
+              "title": "user can add a new todo item",
+              "ok": true,
+              "tags": [
+                "demo",
+                "create",
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f20a0eae4fa7b2eec6ee-5d5edbd590c0065ea6d1",
+              "file": "demo-todomvc.spec.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "user can mark a todo as completed",
+              "ok": true,
+              "tags": [
+                "demo",
+                "complete"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f20a0eae4fa7b2eec6ee-257d42e5ecb5beed288e",
+              "file": "demo-todomvc.spec.ts",
+              "line": 34,
+              "column": 7
+            },
+            {
+              "title": "user can edit an existing todo",
+              "ok": true,
+              "tags": [
+                "demo",
+                "edit"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f20a0eae4fa7b2eec6ee-28f0a5d8b853af1abf7f",
+              "file": "demo-todomvc.spec.ts",
+              "line": 46,
+              "column": 7
+            },
+            {
+              "title": "user can filter active and completed todos",
+              "ok": true,
+              "tags": [
+                "demo",
+                "filter"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f20a0eae4fa7b2eec6ee-395e03b6e81651bb66a1",
+              "file": "demo-todomvc.spec.ts",
+              "line": 61,
+              "column": 7
+            },
+            {
+              "title": "user can clear all completed todos",
+              "ok": true,
+              "tags": [
+                "demo",
+                "clear"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f20a0eae4fa7b2eec6ee-912ca72e094efb616366",
+              "file": "demo-todomvc.spec.ts",
+              "line": 82,
+              "column": 7
+            },
+            {
+              "title": "deleted todo should leave empty list with zero items remaining",
+              "ok": true,
+              "tags": [
+                "demo",
+                "delete",
+                "fail"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f20a0eae4fa7b2eec6ee-dd5e8b279bd00afa294e",
+              "file": "demo-todomvc.spec.ts",
+              "line": 101,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "dummy.spec.ts",
+      "file": "dummy.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "pass - simple math",
+          "ok": true,
+          "tags": [
+            "critical"
+          ],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b3dc6cd63dd63bda1c42-0ca6f5b62880b98cdfc2",
+          "file": "dummy.spec.ts",
+          "line": 3,
+          "column": 5
+        },
+        {
+          "title": "pass - string check",
+          "ok": true,
+          "tags": [
+            "hotshot"
+          ],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b3dc6cd63dd63bda1c42-d8daa3eee3b4cfe572fd",
+          "file": "dummy.spec.ts",
+          "line": 7,
+          "column": 5
+        },
+        {
+          "title": "fail - intentional failure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b3dc6cd63dd63bda1c42-f356906182a21ec72691",
+          "file": "dummy.spec.ts",
+          "line": 11,
+          "column": 5
+        },
+        {
+          "title": "notify channel - login test",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [
+                {
+                  "type": "testdino:notify-slack",
+                  "description": "#new-channel",
+                  "location": {
+                    "file": "/Users/PN/Desktop/ETC/OLD PC TestDino/Folders of OLD PC/parth-trainee/PW-test-for-microservice/tests/dummy.spec.ts",
+                    "line": 15,
+                    "column": 5
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b3dc6cd63dd63bda1c42-1f113552ebd64a6398a8",
+          "file": "dummy.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "notify user - login test",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [
+                {
+                  "type": "testdino:notify-slack",
+                  "description": "@patelsahil",
+                  "location": {
+                    "file": "/Users/PN/Desktop/ETC/OLD PC TestDino/Folders of OLD PC/parth-trainee/PW-test-for-microservice/tests/dummy.spec.ts",
+                    "line": 25,
+                    "column": 5
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b3dc6cd63dd63bda1c42-7d34ca9f814bcf30f10d",
+          "file": "dummy.spec.ts",
+          "line": 25,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "screenshots.spec.ts",
+      "file": "screenshots.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "screenshot artifact 1",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "677a4938ef65bfc6a6e5-cbf623a7a6ccdbf1c9f1",
+          "file": "screenshots.spec.ts",
+          "line": 8,
+          "column": 7
+        },
+        {
+          "title": "screenshot artifact 2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "677a4938ef65bfc6a6e5-56ee7aca9071ef380610",
+          "file": "screenshots.spec.ts",
+          "line": 8,
+          "column": 7
+        },
+        {
+          "title": "screenshot artifact 3",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "677a4938ef65bfc6a6e5-960cd60ea1bbc560fe98",
+          "file": "screenshots.spec.ts",
+          "line": 8,
+          "column": 7
+        },
+        {
+          "title": "screenshot artifact 4",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "677a4938ef65bfc6a6e5-9f0def6c60faa06f3fcd",
+          "file": "screenshots.spec.ts",
+          "line": 8,
+          "column": 7
+        },
+        {
+          "title": "screenshot artifact 5",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "677a4938ef65bfc6a6e5-c876949fff8104bf544a",
+          "file": "screenshots.spec.ts",
+          "line": 8,
+          "column": 7
+        },
+        {
+          "title": "screenshot artifact 6",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "677a4938ef65bfc6a6e5-bcab2f5e78f10516ccfd",
+          "file": "screenshots.spec.ts",
+          "line": 8,
+          "column": 7
+        }
+      ]
+    },
+    {
+      "title": "ui-interactions.spec.ts",
+      "file": "ui-interactions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "TodoMVC UI Interactions and UX Tests",
+          "file": "ui-interactions.spec.ts",
+          "line": 21,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should focus input field on page load",
+              "ok": true,
+              "tags": [
+                "ui",
+                "focus",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-3d799f66f9cd51510fbb",
+              "file": "ui-interactions.spec.ts",
+              "line": 60,
+              "column": 9
+            },
+            {
+              "title": "should display correct placeholder text",
+              "ok": true,
+              "tags": [
+                "ui",
+                "accessibility",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-2139896a7ffac4221d7c",
+              "file": "ui-interactions.spec.ts",
+              "line": 74,
+              "column": 9
+            },
+            {
+              "title": "should show todo list when todos exist",
+              "ok": true,
+              "tags": [
+                "ui",
+                "visibility",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-d64c5edfd520fc583324",
+              "file": "ui-interactions.spec.ts",
+              "line": 88,
+              "column": 9
+            },
+            {
+              "title": "should display correct todo count",
+              "ok": true,
+              "tags": [
+                "ui",
+                "counter",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-5329be7be24d83ec1b2b",
+              "file": "ui-interactions.spec.ts",
+              "line": 102,
+              "column": 9
+            },
+            {
+              "title": "should show checkbox for each todo",
+              "ok": true,
+              "tags": [
+                "ui",
+                "checkbox",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-4fbe8d2b828f7f26e057",
+              "file": "ui-interactions.spec.ts",
+              "line": 118,
+              "column": 9
+            },
+            {
+              "title": "should show delete button on todo hover",
+              "ok": true,
+              "tags": [
+                "ui",
+                "hover",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-0224f38451bf1e7e9c46",
+              "file": "ui-interactions.spec.ts",
+              "line": 132,
+              "column": 9
+            },
+            {
+              "title": "should display all filter buttons",
+              "ok": true,
+              "tags": [
+                "ui",
+                "filters",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-a4ecaadb110304290d87",
+              "file": "ui-interactions.spec.ts",
+              "line": 149,
+              "column": 9
+            },
+            {
+              "title": "should show toggle all button when todos exist",
+              "ok": true,
+              "tags": [
+                "ui",
+                "toggle-all",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-8a45b78109c9c5beb858",
+              "file": "ui-interactions.spec.ts",
+              "line": 165,
+              "column": 9
+            },
+            {
+              "title": "should apply completed styling to checked todos",
+              "ok": true,
+              "tags": [
+                "ui",
+                "styling",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-57eb436df993a95557d8",
+              "file": "ui-interactions.spec.ts",
+              "line": 179,
+              "column": 9
+            },
+            {
+              "title": "should enter edit mode on double click",
+              "ok": true,
+              "tags": [
+                "ui",
+                "edit-mode",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-bd47228cf6f0da1c3ebf",
+              "file": "ui-interactions.spec.ts",
+              "line": 196,
+              "column": 9
+            },
+            {
+              "title": "should clear input field after todo creation",
+              "ok": true,
+              "tags": [
+                "ui",
+                "input",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-a149c02348f1c2996031",
+              "file": "ui-interactions.spec.ts",
+              "line": 213,
+              "column": 9
+            },
+            {
+              "title": "should display footer when todos exist",
+              "ok": true,
+              "tags": [
+                "ui",
+                "footer",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-e6e02118d69170abae6c",
+              "file": "ui-interactions.spec.ts",
+              "line": 229,
+              "column": 9
+            },
+            {
+              "title": "should show clear completed button when completed todos exist",
+              "ok": true,
+              "tags": [
+                "ui",
+                "clear-completed",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-76f0a3d356b9b7ab0a51",
+              "file": "ui-interactions.spec.ts",
+              "line": 243,
+              "column": 9
+            },
+            {
+              "title": "should highlight active filter",
+              "ok": true,
+              "tags": [
+                "ui",
+                "filters",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-456dcebfe71af3ec7700",
+              "file": "ui-interactions.spec.ts",
+              "line": 259,
+              "column": 9
+            },
+            {
+              "title": "should display todo text correctly",
+              "ok": true,
+              "tags": [
+                "ui",
+                "text-display",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-343d142ba41ef281a961",
+              "file": "ui-interactions.spec.ts",
+              "line": 276,
+              "column": 9
+            },
+            {
+              "title": "should position elements correctly",
+              "ok": true,
+              "tags": [
+                "ui",
+                "layout",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-c61fadff339bb76d3f9b",
+              "file": "ui-interactions.spec.ts",
+              "line": 291,
+              "column": 9
+            },
+            {
+              "title": "should navigate focus with keyboard",
+              "ok": true,
+              "tags": [
+                "ui",
+                "keyboard",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-67ff0d96a994311b5e99",
+              "file": "ui-interactions.spec.ts",
+              "line": 313,
+              "column": 9
+            },
+            {
+              "title": "should update checkbox state visually",
+              "ok": true,
+              "tags": [
+                "ui",
+                "checkbox",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-9aff0065c5212832bb62",
+              "file": "ui-interactions.spec.ts",
+              "line": 335,
+              "column": 9
+            },
+            {
+              "title": "should maintain todo list order",
+              "ok": true,
+              "tags": [
+                "ui",
+                "ordering",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-d163211c63fb8ad3ac62",
+              "file": "ui-interactions.spec.ts",
+              "line": 352,
+              "column": 9
+            },
+            {
+              "title": "should adapt to different viewport sizes",
+              "ok": true,
+              "tags": [
+                "ui",
+                "responsive",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-1124178e13b724c86bb4",
+              "file": "ui-interactions.spec.ts",
+              "line": 371,
+              "column": 9
+            },
+            {
+              "title": "should apply correct element colors",
+              "ok": true,
+              "tags": [
+                "ui",
+                "styling",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-fa8de8ac9eef87b728a6",
+              "file": "ui-interactions.spec.ts",
+              "line": 390,
+              "column": 9
+            },
+            {
+              "title": "should use appropriate font sizes",
+              "ok": true,
+              "tags": [
+                "ui",
+                "typography",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-301d49ec1c9f88efed0a",
+              "file": "ui-interactions.spec.ts",
+              "line": 410,
+              "column": 9
+            },
+            {
+              "title": "should provide visual feedback on button click",
+              "ok": true,
+              "tags": [
+                "ui",
+                "interaction",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-7f979a362b49606eef1c",
+              "file": "ui-interactions.spec.ts",
+              "line": 428,
+              "column": 9
+            },
+            {
+              "title": "should handle loading states correctly",
+              "ok": true,
+              "tags": [
+                "ui",
+                "loading",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-836cff7ae057fca0ec78",
+              "file": "ui-interactions.spec.ts",
+              "line": 446,
+              "column": 9
+            },
+            {
+              "title": "should handle error states gracefully",
+              "ok": true,
+              "tags": [
+                "ui",
+                "error-handling",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-d4a95d490c900d1988f3",
+              "file": "ui-interactions.spec.ts",
+              "line": 466,
+              "column": 9
+            },
+            {
+              "title": "should handle scrolling with many todos",
+              "ok": true,
+              "tags": [
+                "ui",
+                "scrolling",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-ba54e4fa3a405986f400",
+              "file": "ui-interactions.spec.ts",
+              "line": 484,
+              "column": 9
+            },
+            {
+              "title": "should layer elements correctly",
+              "ok": true,
+              "tags": [
+                "ui",
+                "layering",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-466ac0f40103bd0a3dc0",
+              "file": "ui-interactions.spec.ts",
+              "line": 506,
+              "column": 9
+            },
+            {
+              "title": "should apply smooth transitions",
+              "ok": true,
+              "tags": [
+                "ui",
+                "animations",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-226b8bdadb50814e3638",
+              "file": "ui-interactions.spec.ts",
+              "line": 527,
+              "column": 9
+            },
+            {
+              "title": "should show correct cursor styles",
+              "ok": true,
+              "tags": [
+                "ui",
+                "cursor",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-646dcf5ce0abb33751dc",
+              "file": "ui-interactions.spec.ts",
+              "line": 546,
+              "column": 9
+            },
+            {
+              "title": "should handle complete UI workflow smoothly",
+              "ok": true,
+              "tags": [
+                "ui",
+                "integration",
+                "all"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cdf06863a7e2797e8f34-07738444b07da3c314b2",
+              "file": "ui-interactions.spec.ts",
+              "line": 565,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-02T12:54:51.627Z",
+    "duration": 120.21999999999997,
+    "expected": 0,
+    "skipped": 47,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

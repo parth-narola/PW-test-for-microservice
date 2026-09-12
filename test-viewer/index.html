@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TestDino - Live Test Viewer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1>🦖 TestDino</h1>
+        <span class="status-badge" id="status">Connecting...</span>
+      </div>
+      <div class="header-right">
+        <span class="stat">Total: <strong id="stat-total">0</strong></span>
+        <span class="stat passed">Passed: <strong id="stat-passed">0</strong></span>
+        <span class="stat failed">Failed: <strong id="stat-failed">0</strong></span>
+        <span class="stat running">Running: <strong id="stat-running">0</strong></span>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <div class="main">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Tests</h2>
+          <select id="filter">
+            <option value="all">All</option>
+            <option value="running">Running</option>
+            <option value="passed">Passed</option>
+            <option value="failed">Failed</option>
+          </select>
+        </div>
+        <div class="test-list" id="test-list">
+          <p class="empty">Waiting for tests...</p>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <main class="content">
+        <div class="test-detail" id="test-detail">
+          <p class="empty">Select a test to view details</p>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

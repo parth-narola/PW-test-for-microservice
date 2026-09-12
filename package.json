@@ -1,0 +1,17 @@
+{
+  "name": "playwright-test-demo",
+  "version": "1.0.0",
+  "description": "Playwright test project with CI/CD",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62"
+  },
+  "dependencies": {
+    "@testdino/playwright": "^2.2.1"
+  }
+}

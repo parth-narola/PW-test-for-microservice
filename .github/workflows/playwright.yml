@@ -1,0 +1,37 @@
+name: Playwright Tests
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    timeout-minutes: 20
+    # Self-hosted runner on the local Mac — shares localhost with the TestDino
+    # backend, so the reporter streams to localhost:3005 (auth) and the local
+    # Redpanda broker (localhost:19092) with no tunnel. Bring the backend up
+    # (make infra-up + services) before this runs.
+    runs-on: ubuntu-latest                                                                                                                                                      
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        # Full history so the PR-head commit is present locally for git show /
+        # commit metadata (default depth=1 shallow clone can miss it).
+        fetch-depth: 0
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+    - name: Install dependencies
+      run: npm install
+    - name: Install Playwright browser (firefox)
+      run: npx playwright install firefox
+    - name: Install tdpw CLI (local build with bundled ESM deps)
+      run: npm install ./testdino-playwright-2.0.0.tgz
+    - name: Run Playwright tests (TestDino reporter → local backend)
+      # GITHUB_TOKEN authenticates the reporter's api.github.com calls (author
+      # login/ID, PR details). Without it the calls are anonymous → rate-limited
+      # → slow → the git metadata collector times out and is dropped.
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: npx tdpw test -t "td_api_6f1e5a7c42cd84f0ac9c58c7d1b6c5afe54579760941bbaf44141e50ac910ad6" --server-url=https://stg-analytics.testdino.com --no-artifacts || true
