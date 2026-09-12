@@ -17,6 +17,19 @@ on:
           - preview
           - localhost
         default: localhost
+      testdino_rerun_from:
+        description: 'TestDino run id to re-run failures from'
+        required: false
+        type: string
+      testdino_rerun_scope:
+        description: 'Which tests to re-run'
+        required: false
+        type: choice
+        options:
+          - failed
+          - flaky
+          - all
+        default: failed
 
 jobs:
   run-tests:
