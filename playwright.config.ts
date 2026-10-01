@@ -14,7 +14,7 @@ export default defineConfig({
     ['blob', { outputDir: 'blob-report' }],
     ['json', { outputFile: 'report.json' }],
     // Streaming reporter disabled — the shard -> merge -> `tdpw upload` flow uses the upload CLI, not streaming.
-    // ['@testdino/playwright', { token: 'td_api_44e9629da81fdae50091aa06c00bfac4929834a72e52efb38e414da6b973fe90' }],
+    // ['@testdino/playwright', { token: process.env.TESTDINO_TOKEN }],
   ],
   use: {
     baseURL: 'http://localhost:3000',

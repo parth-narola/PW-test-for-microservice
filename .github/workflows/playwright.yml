@@ -1,7 +1,6 @@
 name: Playwright Tests
 on:
-  push:
-  pull_request:
+  workflow_dispatch:
 jobs:
   test:
     timeout-minutes: 20
@@ -34,4 +33,6 @@ jobs:
       # → slow → the git metadata collector times out and is dropped.
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: npx tdpw test -t "td_api_6f1e5a7c42cd84f0ac9c58c7d1b6c5afe54579760941bbaf44141e50ac910ad6" --server-url=https://stg-analytics.testdino.com --no-artifacts || true
+        TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+        TESTDINO_SERVER_URL: ${{ vars.TESTDINO_SERVER_URL }}
+      run: npx tdpw test --no-artifacts
