@@ -3,10 +3,40 @@ name: In-run re-run
 on:
   push:
     branches: [rerun-in-run-test]
+  # The names are fixed by the server (workflowDispatch.ts); an undeclared one is
+  # never sent, so declaring all of them is what makes every re-run shape work.
   workflow_dispatch:
+    inputs:
+      testdino_rerun_from:
+        description: TestDino run id to re-run failures from
+        required: false
+        type: string
+      testdino_rerun_scope:
+        description: failed | flaky | failed-and-flaky
+        required: false
+        default: failed
+        type: string
+      testdino_rerun_sha:
+        description: Commit to run against (empty = branch tip)
+        required: false
+        type: string
+      testdino_rerun_test_ids:
+        description: Comma-separated test ids for a hand-picked re-run
+        required: false
+        type: string
+      testdino_rerun_exclude_ids:
+        description: Comma-separated test ids to drop from the scope
+        required: false
+        type: string
+      testdino_rerun_tags:
+        description: Comma-separated run tags for the re-run
+        required: false
+        type: string
 
 jobs:
   e2e:
+    # A re-run dispatch runs only the testdino-rerun job below.
+    if: inputs.testdino_rerun_from == ''
     runs-on: ubuntu-latest
     timeout-minutes: 15
     strategy:
@@ -28,3 +58,29 @@ jobs:
         env:
           TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
           TESTDINO_SERVER_URL: ${{ vars.TESTDINO_SERVER_URL }}
+
+  testdino-rerun:
+    if: inputs.testdino_rerun_from != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # An empty sha checks out the branch tip, which is what "Latest" means.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.testdino_rerun_sha || github.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npx playwright install --with-deps firefox
+      - name: Re-run the selected tests
+        env:
+          TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+          TESTDINO_SERVER_URL: ${{ vars.TESTDINO_SERVER_URL }}
+        run: |
+          npx tdpw test --no-artifacts \
+            --rerun "${{ inputs.testdino_rerun_scope }}" \
+            --from-run "${{ inputs.testdino_rerun_from }}" \
+            ${{ inputs.testdino_rerun_test_ids && format('--test-ids "{0}"', inputs.testdino_rerun_test_ids) || '' }} \
+            ${{ inputs.testdino_rerun_exclude_ids && format('--exclude-ids "{0}"', inputs.testdino_rerun_exclude_ids) || '' }} \
+            ${{ inputs.testdino_rerun_tags && format('--rerun-tags "{0}"', inputs.testdino_rerun_tags) || '' }}
