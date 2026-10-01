@@ -24,11 +24,12 @@ export default defineConfig({
     screenshot: 'on',
     video: 'on',
   },
-  // Flaky test configuration
+  // The browser specs drive a remote demo app; 1s/3s failed them on latency
+  // rather than on behaviour, which buried the real failures.
   expect: {
-    timeout: 1000,
+    timeout: 5000,
   },
-  timeout: 3000,
+  timeout: 20000,
 
   projects: [
     // { name: 'chromium', use: { ...devices['Desktop Chrome'], headless: true } },
