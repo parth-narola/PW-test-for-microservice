@@ -24,12 +24,24 @@ on:
       testdino_rerun_scope:
         description: 'Which tests to re-run'
         required: false
-        type: choice
-        options:
-          - failed
-          - flaky
-          - all
+        type: string
         default: failed
+      testdino_rerun_sha:
+        description: 'Commit to run against (empty = branch tip)'
+        required: false
+        type: string
+      testdino_rerun_test_ids:
+        description: 'Comma-separated test ids for a hand-picked re-run'
+        required: false
+        type: string
+      testdino_rerun_exclude_ids:
+        description: 'Comma-separated test ids to drop from the scope'
+        required: false
+        type: string
+      testdino_rerun_tags:
+        description: 'Comma-separated run tags for the re-run'
+        required: false
+        type: string
 
 jobs:
   run-tests:
@@ -131,7 +143,9 @@ jobs:
           path: .
 
       - name: Publish reports to TestDino
-        run: npx tdpw upload ./playwright-report --token=trx_production_7f35ad6fb740599af5bf65d42f59e22443bd9823fdaa2f8d3adca7c506d0469f --upload-html --json-report ./test-results.json --environment ${{ inputs.environment || vars.ENVIRONMENT || 'localhost' }}
+        env:
+          TESTDINO_UPLOAD_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+        run: npx tdpw upload ./playwright-report --token="$TESTDINO_UPLOAD_TOKEN" --upload-html --json-report ./test-results.json --environment ${{ inputs.environment || vars.ENVIRONMENT || 'localhost' }}
 
   # Re-run only the failed/flaky tests of an earlier TestDino run, triggered from
   # the dashboard's Re-run button. Skipped on a normal dispatch.
@@ -141,10 +155,13 @@ jobs:
   # point TESTDINO_SERVER_URL at a publicly reachable backend instead.
   testdino-rerun:
     if: inputs.testdino_rerun_from != ''
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      # An empty sha checks out the branch tip, which is what "Latest" means.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.testdino_rerun_sha || github.ref }}
 
       - uses: actions/setup-node@v4
         with:
@@ -159,13 +176,16 @@ jobs:
       # The re-run flags are unreleased, so the CLI comes from the packed build
       # committed here rather than npm.
       - name: Install TestDino CLI (packed build with --rerun)
-        run: npm install --no-save ./testdino-playwright-2.6.0.tgz
+        run: npm install --no-save ./testdino-playwright-2.7.7.tgz
 
       - name: Re-run the failed tests
         env:
           TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
           TESTDINO_SERVER_URL: ${{ vars.TESTDINO_SERVER_URL || 'http://localhost:3005' }}
         run: |
-          npx tdpw test \
+          npx tdpw test --no-artifacts \
             --rerun "${{ inputs.testdino_rerun_scope }}" \
-            --from-run "${{ inputs.testdino_rerun_from }}"
+            --from-run "${{ inputs.testdino_rerun_from }}" \
+            ${{ inputs.testdino_rerun_test_ids && format('--test-ids "{0}"', inputs.testdino_rerun_test_ids) || '' }} \
+            ${{ inputs.testdino_rerun_exclude_ids && format('--exclude-ids "{0}"', inputs.testdino_rerun_exclude_ids) || '' }} \
+            ${{ inputs.testdino_rerun_tags && format('--rerun-tags "{0}"', inputs.testdino_rerun_tags) || '' }}
