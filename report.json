@@ -360,6 +360,314 @@
       ]
     },
     {
+      "title": "rerun.spec.ts",
+      "file": "rerun.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "stable 1",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-a713788f80b66b09849e",
+          "file": "rerun.spec.ts",
+          "line": 10,
+          "column": 5
+        },
+        {
+          "title": "stable 2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-d0ec9ad79cfb87f8fc4c",
+          "file": "rerun.spec.ts",
+          "line": 11,
+          "column": 5
+        },
+        {
+          "title": "stable 3",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-885ceaa8a5f7800e2308",
+          "file": "rerun.spec.ts",
+          "line": 12,
+          "column": 5
+        },
+        {
+          "title": "flips on retry A",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-7d35458f3af6f3631c93",
+          "file": "rerun.spec.ts",
+          "line": 13,
+          "column": 5
+        },
+        {
+          "title": "stable 4",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-9e2ef340918ee03eb2ca",
+          "file": "rerun.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "stable 5",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-9d91010bb222d1c1b4e9",
+          "file": "rerun.spec.ts",
+          "line": 16,
+          "column": 5
+        },
+        {
+          "title": "stable 6",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-104e9a52188ecc606a8f",
+          "file": "rerun.spec.ts",
+          "line": 17,
+          "column": 5
+        },
+        {
+          "title": "flips on retry B",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-a5ea9e72a9085556acdb",
+          "file": "rerun.spec.ts",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "stable 7",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-122ec5298b3f75a5adf9",
+          "file": "rerun.spec.ts",
+          "line": 20,
+          "column": 5
+        },
+        {
+          "title": "stable 8",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-2ad92eae6a5df9cf3174",
+          "file": "rerun.spec.ts",
+          "line": 21,
+          "column": 5
+        },
+        {
+          "title": "stable 9",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-60d3b7c1bbec9c629099",
+          "file": "rerun.spec.ts",
+          "line": 22,
+          "column": 5
+        },
+        {
+          "title": "stable 10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-e87a3753013818328e28",
+          "file": "rerun.spec.ts",
+          "line": 23,
+          "column": 5
+        },
+        {
+          "title": "always fails",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-0a788fcd3d88574badb2",
+          "file": "rerun.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "stable 11",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-059ec7c102f01090ec15",
+          "file": "rerun.spec.ts",
+          "line": 26,
+          "column": 5
+        },
+        {
+          "title": "stable 12",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 3000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b23a61e8c33f49087bb7-f28c7f4dcbf033acd3c3",
+          "file": "rerun.spec.ts",
+          "line": 27,
+          "column": 5
+        }
+      ]
+    },
+    {
       "title": "screenshots.spec.ts",
       "file": "screenshots.spec.ts",
       "column": 0,
@@ -1227,10 +1535,10 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-09-02T12:54:51.627Z",
-    "duration": 120.21999999999997,
+    "startTime": "2026-10-01T10:42:48.013Z",
+    "duration": 218.961,
     "expected": 0,
-    "skipped": 47,
+    "skipped": 62,
     "unexpected": 0,
     "flaky": 0
   }
