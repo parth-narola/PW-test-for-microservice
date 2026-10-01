@@ -19,7 +19,11 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npx tdpw test tests/rerun.spec.ts --shard=${{ matrix.shard }}/4 --no-artifacts
+      # --ci-run-id is the shard grouping key (ingestion docs/SHARDS.md): without it
+      # every shard job invents its own id and lands as a separate 1/4 run that
+      # waits forever for siblings. The attempt is in the key so a re-run starts a
+      # new group instead of joining the finished one.
+      - run: npx tdpw test tests/rerun.spec.ts --shard=${{ matrix.shard }}/4 --ci-run-id "${{ github.run_id }}-${{ github.run_attempt }}" --no-artifacts
         env:
           TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
           TESTDINO_SERVER_URL: ${{ vars.TESTDINO_SERVER_URL }}
