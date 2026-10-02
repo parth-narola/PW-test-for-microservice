@@ -12,7 +12,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        split: [1, 2, 3]
+        # --split only correlates the invocations; unlike --shard it does not
+        # slice the suite, so each split is handed its own spec files.
+        include:
+          - split: 1
+            specs: tests/ui-interactions.spec.ts
+          - split: 2
+            specs: tests/rerun.spec.ts tests/screenshots.spec.ts
+          - split: 3
+            specs: tests/demo-todomvc.spec.ts tests/dummy.spec.ts
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -22,7 +30,7 @@ jobs:
       - run: npx playwright install --with-deps firefox
       # --split-id is the grouping key for a split run, the way --ci-run-id is
       # for shards; the attempt keeps a re-run from joining the finished group.
-      - run: npx tdpw test --split ${{ matrix.split }}/3 --split-id "${{ github.run_id }}-${{ github.run_attempt }}" --no-artifacts
+      - run: npx tdpw test ${{ matrix.specs }} --split ${{ matrix.split }}/3 --split-id "${{ github.run_id }}-${{ github.run_attempt }}" --no-artifacts
         env:
           TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
           TESTDINO_SERVER_URL: ${{ vars.TESTDINO_SERVER_URL }}
