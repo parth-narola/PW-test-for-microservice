@@ -1,0 +1,24 @@
+name: Reporter only
+
+on:
+  push:
+    branches: [rerun-in-run-test]
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npx playwright install --with-deps firefox
+      # No tdpw: the reporter observes the run and cannot remove tests, so a
+      # retry of this run re-runs the failed jobs in full.
+      - run: npx playwright test --config=playwright.reporter.config.ts
+        env:
+          TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+          TESTDINO_SERVER_URL: ${{ vars.TESTDINO_SERVER_URL }}
