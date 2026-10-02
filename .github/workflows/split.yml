@@ -1,0 +1,28 @@
+name: Split run
+
+on:
+  push:
+    branches: [rerun-in-run-test]
+  workflow_dispatch:
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        split: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npx playwright install --with-deps firefox
+      # --split-id is the grouping key for a split run, the way --ci-run-id is
+      # for shards; the attempt keeps a re-run from joining the finished group.
+      - run: npx tdpw test --split ${{ matrix.split }}/3 --split-id "${{ github.run_id }}-${{ github.run_attempt }}" --no-artifacts
+        env:
+          TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+          TESTDINO_SERVER_URL: ${{ vars.TESTDINO_SERVER_URL }}
