@@ -4,10 +4,6 @@ test('pass - simple math', { tag: '@critical' }, () => {
   expect(1 + 1).toBe(2);
 });
 
-test('pass - string check', { tag: '@hotshot' }, () => {
-  expect('hello world').toContain('world');
-});
-
 test('fail - intentional failure', () => {
   expect(true).toBe(false);
 });
