@@ -1,0 +1,31 @@
+# Local end-to-end check for TestDino "Run automated tests": runs only on the
+# self-hosted runner labelled testdino-local, only when TestDino dispatches it.
+name: TestDino run selection (local e2e)
+
+on:
+  workflow_dispatch:
+    inputs:
+      testdino_selection:
+        description: Set by TestDino's "Run automated tests". Leave empty to run the full suite.
+        required: false
+
+jobs:
+  test:
+    runs-on: [self-hosted, testdino-local]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        shell: bash
+        run: |
+          npm ci --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund "$TD_CLI_TGZ"
+      - name: Run tests
+        env:
+          TD_SELECTION: ${{ inputs.testdino_selection }}
+        shell: bash
+        run: |
+          args=()
+          if [ -n "$TD_SELECTION" ]; then
+            args+=(--selection "$TD_SELECTION")
+          fi
+          npx tdpw test --no-artifacts "${args[@]}"
