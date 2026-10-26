@@ -21,6 +21,10 @@ on:
         description: 'TestDino run id to re-run failures from'
         required: false
         type: string
+      testdino_rerun_sha:
+        description: 'Commit a same-commit TestDino re-run checks out'
+        required: false
+        type: string
       testdino_rerun_scope:
         description: 'Which tests to re-run'
         required: false
