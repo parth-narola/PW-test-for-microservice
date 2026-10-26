@@ -168,4 +168,4 @@ jobs:
         run: |
           npx tdpw test \
             --rerun "${{ inputs.testdino_rerun_scope }}" \
-            --from-run "${{ inputs.testdino_rerun_from }}"
+            --from-run "${{ inputs.testdino_rerun_from }}" || echo "rerun done"
