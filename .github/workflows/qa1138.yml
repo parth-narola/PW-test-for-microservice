@@ -1,0 +1,26 @@
+name: QA TDV2-1138 shared setup shards
+on:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+    defaults:
+      run:
+        working-directory: qa1138
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - name: Run shard ${{ matrix.shard }}/2
+        env:
+          TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN_1138 }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx tdpw test --server-url https://stg-reporter.testdino.com --no-artifacts -- --shard=${{ matrix.shard }}/2
