@@ -23,4 +23,4 @@ jobs:
         env:
           TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN_1138 }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx tdpw test --server-url https://stg-reporter.testdino.com --no-artifacts -- --shard=${{ matrix.shard }}/2
+        run: npx tdpw test --server-url https://stg-reporter.testdino.com --no-artifacts --ci-run-id ${{ github.run_id }}-${{ github.run_attempt }} -- --shard=${{ matrix.shard }}/2
