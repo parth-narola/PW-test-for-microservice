@@ -1,0 +1,35 @@
+# Staging (lab) check for TestDino "Run tests": GitHub-hosted, reports to lab with CLI 2.11.6.
+name: TestDino run selection (lab)
+
+on:
+  workflow_dispatch:
+    inputs:
+      testdino_selection:
+        description: Set by TestDino's "Run tests". Leave empty to run the full suite.
+        required: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: |
+          npm ci --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund ./vendor/testdino-playwright-2.11.6.tgz
+          npx playwright install --with-deps firefox
+      - name: Run tests
+        env:
+          TD_SELECTION: ${{ inputs.testdino_selection }}
+          TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN_LAB }}
+          TESTDINO_SERVER_URL: https://stg-analytics.testdino.com
+        shell: bash
+        run: |
+          args=()
+          if [ -n "$TD_SELECTION" ]; then
+            args+=(--selection "$TD_SELECTION")
+          fi
+          npx tdpw test --no-artifacts "${args[@]}"
