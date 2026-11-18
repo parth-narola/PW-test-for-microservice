@@ -1,0 +1,27 @@
+# QA for TDV2-1201 (do not merge): 2 shards reporting to lab; shard 2 fails on attempt 1 only.
+name: QA TDV2-1201 webhooks
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2]
+        shardTotal: [2]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: |
+          npm ci --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund ./vendor/testdino-playwright-2.11.6.tgz
+      - name: Run tests
+        env:
+          TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN_LAB }}
+          TESTDINO_SERVER_URL: https://stg-analytics.testdino.com
+        run: npx tdpw test --no-artifacts -- --config=playwright.qa1201.config.ts --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
