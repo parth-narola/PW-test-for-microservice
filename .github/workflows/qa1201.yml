@@ -24,4 +24,4 @@ jobs:
         env:
           TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN_LAB }}
           TESTDINO_SERVER_URL: https://stg-analytics.testdino.com
-        run: npx tdpw test --no-artifacts -- --config=playwright.qa1201.config.ts --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        run: npx tdpw test --no-artifacts --ci-run-id "${{ github.run_id }}-${{ github.run_attempt }}" -- --config=playwright.qa1201.config.ts --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
